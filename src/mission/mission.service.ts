@@ -21,8 +21,4 @@ export class MissionService {
     );
   }
 
-  findAll() {
-    const missionList = this.missions.map(({ id, codename, status }) => ({ id, codename, status }));
-    return missionList;
-  }
 }
