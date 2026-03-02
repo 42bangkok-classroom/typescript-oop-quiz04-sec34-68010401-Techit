@@ -12,9 +12,12 @@ export class MissionService {
   ];
 
   getSummary() {
-    return this.missions.reduce((summary, mission) => {
-      summary[mission.status] = (summary[mission.status] || 0) + 1;
-      return summary;
-    }, {});
+    return this.missions.reduce(
+      (summary, mission) => {
+        summary[mission.status] = (summary[mission.status] || 0) + 1;
+        return summary;
+      },
+      {} as Record<string, number>,
+    );
   }
 }
