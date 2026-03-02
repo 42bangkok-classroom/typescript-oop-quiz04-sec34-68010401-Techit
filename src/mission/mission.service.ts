@@ -14,22 +14,25 @@ export class MissionService {
     { id: 6, codename: 'GHOST_RIDER', status: 'COMPLETED' }
   ];
 
-  getSumary() {
-    const summary = {
-      totalMissions: this.missions.length,
-      activeMissions: this.missions.filter(m => m.status === 'ACTIVE').length,
-      completedMissions: this.missions.filter(m => m.status === 'COMPLETED').length,
-      failedMissions: this.missions.filter(m => m.status === 'FAILED').length
+  getSummary() {
+    const totalMissions = this.missions.length;
+    const activeMissions = this.missions.filter(m => m.status === 'ACTIVE').length;
+    const completedMissions = this.missions.filter(m => m.status === 'COMPLETED').length;
+    const failedMissions = this.missions.filter(m => m.status === 'FAILED').length;
+
+    return {
+      activeMissions,
+      completedMissions,
+      failedMissions
     };
-    return summary;
   }
-  
+
   create(createMissionDto: CreateMissionDto) {
     return 'This action adds a new mission';
   }
 
   findAll() {
-    return this.missions;
+    return `This action returns all mission`;
   }
 
   findOne(id: number) {
