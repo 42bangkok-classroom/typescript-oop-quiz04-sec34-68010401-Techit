@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { IMission } from './mission.interface';
 
 @Injectable()
 export class MissionService {
@@ -19,5 +20,11 @@ export class MissionService {
       },
       {} as Record<string, number>,
     );
+  }
+
+  findAll(): IMission[] {
+    const filepath = `data/missions.json`;
+    const fileContent = require(`../${filepath}`);
+    return fileContent as IMission[];
   }
 }
