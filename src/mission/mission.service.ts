@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateMissionDto } from './dto/create-mission.dto';
-import { UpdateMissionDto } from './dto/update-mission.dto';
 
 @Injectable()
 export class MissionService {
@@ -16,9 +14,15 @@ export class MissionService {
 
   getSummary() {
     const totalMissions = this.missions.length;
-    const activeMissions = this.missions.filter(m => m.status === 'ACTIVE').length;
-    const completedMissions = this.missions.filter(m => m.status === 'COMPLETED').length;
-    const failedMissions = this.missions.filter(m => m.status === 'FAILED').length;
+    const activeMissions = this.missions.reduce((count, mission) => {
+      return mission.status === 'ACTIVE' ? count + 1 : count;
+    }, 0);
+    const completedMissions = this.missions.reduce((count, mission) => {
+      return mission.status === 'COMPLETED' ? count + 1 : count;
+    }, 0);
+    const failedMissions = this.missions.reduce((count, mission) => {
+      return mission.status === 'FAILED' ? count + 1 : count;
+    }, 0);
 
     return {
       activeMissions,
