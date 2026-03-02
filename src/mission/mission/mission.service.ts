@@ -23,4 +23,24 @@ export class MissionService {
     };
     return summary;
   }
+  
+  create(createMissionDto: CreateMissionDto) {
+    return 'This action adds a new mission';
+  }
+
+  findAll() {
+    return this.missions;
+  }
+
+  findOne(id: number) {
+    return `This action returns a #${id} mission`;
+  }
+
+  update(id: number, updateMissionDto: UpdateMissionDto) {
+    return `This action updates a #${id} mission`;
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} mission`;
+  }
 }
