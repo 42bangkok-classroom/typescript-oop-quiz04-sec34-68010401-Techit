@@ -13,14 +13,12 @@ export class MissionService {
   ];
 
   getSummary() {
-    const activeMissions = this.missions.filter(mission => mission.status === 'ACTIVE').length;
-    const completedMissions = this.missions.filter(mission => mission.status === 'COMPLETED').length;
-    const failedMissions = this.missions.filter(mission => mission.status === 'FAILED').length;
-
-    return {
-      activeMissions,
-      completedMissions,
-      failedMissions
-    };
+   return this.missions.reduce((summary, mission) => {
+      if (!summary[mission.status]) {
+        summary[mission.status] = 0;
+      }
+      summary[mission.status]++;
+      return summary;
+    }, {});
   }
 }
