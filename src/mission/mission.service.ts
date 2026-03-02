@@ -13,15 +13,9 @@ export class MissionService {
   ];
 
   getSummary() {
-    const activeMissions = this.missions.reduce((count, mission) => {
-      return mission.status === 'ACTIVE' ? count + 1 : count;
-    }, 0);
-    const completedMissions = this.missions.reduce((count, mission) => {
-      return mission.status === 'COMPLETED' ? count + 1 : count;
-    }, 0);
-    const failedMissions = this.missions.reduce((count, mission) => {
-      return mission.status === 'FAILED' ? count + 1 : count;
-    }, 0);
+    const activeMissions = this.missions.filter(mission => mission.status === 'ACTIVE').length;
+    const completedMissions = this.missions.filter(mission => mission.status === 'COMPLETED').length;
+    const failedMissions = this.missions.filter(mission => mission.status === 'FAILED').length;
 
     return {
       activeMissions,
