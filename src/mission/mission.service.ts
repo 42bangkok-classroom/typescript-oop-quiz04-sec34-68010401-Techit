@@ -20,5 +20,4 @@ export class MissionService {
       {} as Record<string, number>,
     );
   }
-
 }
