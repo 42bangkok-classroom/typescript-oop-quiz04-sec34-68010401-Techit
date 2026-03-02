@@ -13,7 +13,6 @@ export class MissionService {
   ];
 
   getSummary() {
-    const totalMissions = this.missions.length;
     const activeMissions = this.missions.reduce((count, mission) => {
       return mission.status === 'ACTIVE' ? count + 1 : count;
     }, 0);
@@ -29,25 +28,5 @@ export class MissionService {
       completedMissions,
       failedMissions
     };
-  }
-
-  create(createMissionDto: CreateMissionDto) {
-    return 'This action adds a new mission';
-  }
-
-  findAll() {
-    return `This action returns all mission`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} mission`;
-  }
-
-  update(id: number, updateMissionDto: UpdateMissionDto) {
-    return `This action updates a #${id} mission`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} mission`;
   }
 }

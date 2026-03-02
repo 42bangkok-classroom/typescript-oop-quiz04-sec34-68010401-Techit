@@ -6,28 +6,8 @@ import { MissionService } from './mission.service';
 export class MissionController {
   constructor(private readonly missionService: MissionService) {}
 
-  @Post()
-  create(@Body() createMissionDto: CreateMissionDto) {
-    return this.missionService.create(createMissionDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.missionService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.missionService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMissionDto: UpdateMissionDto) {
-    return this.missionService.update(+id, updateMissionDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.missionService.remove(+id);
-  }
+  @Get('summary')
+  getSummary() {
+    return this.missionService.getSummary();
+  } 
 }
