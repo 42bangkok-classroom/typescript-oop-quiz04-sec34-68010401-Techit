@@ -12,18 +12,9 @@ export class MissionService {
   ];
 
   getSummary() {
-    const summary = {
-      totalMissions: this.missions.length,
-      activeMissions: this.missions.reduce((count, mission) => {
-        return mission.status === 'ACTIVE' ? count + 1 : count;
-      }, 0),
-      completedMissions: this.missions.reduce((count, mission) => {
-        return mission.status === 'COMPLETED' ? count + 1 : count;
-      }, 0),
-      failedMissions: this.missions.reduce((count, mission) => {
-        return mission.status === 'FAILED' ? count + 1 : count;
-      }, 0),
-    };
-    return summary;
+    return this.missions.reduce((summary, mission) => {
+      summary[mission.status] = (summary[mission.status] || 0) + 1;
+      return summary;
+    }, {});
   }
 }
