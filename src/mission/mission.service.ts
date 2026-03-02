@@ -20,4 +20,9 @@ export class MissionService {
       {} as Record<string, number>,
     );
   }
+
+  findAll() {
+    const missionList = this.missions.map(({ id, codename, status }) => ({ id, codename, status }));
+    return missionList;
+  }
 }
